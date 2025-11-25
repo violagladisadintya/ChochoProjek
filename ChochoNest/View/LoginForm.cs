@@ -62,8 +62,8 @@ namespace ChochoNest.View
                 MessageBox.Show($"Login berhasil. Selamat datang {user.Username}", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Contoh buka form pelanggan
-                Pelanggan_Dashboard PD= new Pelanggan_Dashboard();
-                PD.Show();
+                KatalogPelanggan KP= new KatalogPelanggan();
+                KP.Show();
                 this.Hide();
             }
             else
