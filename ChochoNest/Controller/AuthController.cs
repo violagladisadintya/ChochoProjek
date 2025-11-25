@@ -101,33 +101,5 @@ namespace ChochoNest.Controller
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
         }
-        public void TambahProduk(Produk produk)
-        {
-            string query = "INSERT INTO produk (nama_produk, harga, stok, gambar_produk) VALUES (@nama, @harga, @stok, @gambar)";
-            try
-            {
-                using (NpgsqlConnection conn = new NpgsqlConnection(_dbContext.connStr))
-                {
-                    conn.Open();
-                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@nama", produk.NamaProduk);
-                        cmd.Parameters.AddWithValue("@harga", produk.Harga);
-                        cmd.Parameters.AddWithValue("@stok", produk.Stok);
-
-                        // Logika Gambar
-                        if (produk.gambarProduk != null)
-                            cmd.Parameters.AddWithValue("@gambar", produk.gambarProduk);
-                        else
-                            cmd.Parameters.AddWithValue("@gambar", DBNull.Value);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal menambah produk: " + ex.Message);
-            }
-        }
     }
 }
