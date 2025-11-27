@@ -29,47 +29,51 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KatalogPelanggan));
-            RiwayatTransaksiPelBTN = new Button();
+            RiwayatTransaksiBTN = new Button();
             KeranjangBTN = new Button();
             SuspendLayout();
             // 
-            // RiwayatTransaksiPelBTN
+            // RiwayatTransaksiBTN
             // 
-            RiwayatTransaksiPelBTN.BackColor = Color.Transparent;
-            RiwayatTransaksiPelBTN.Location = new Point(73, 204);
-            RiwayatTransaksiPelBTN.Name = "RiwayatTransaksiPelBTN";
-            RiwayatTransaksiPelBTN.Size = new Size(144, 29);
-            RiwayatTransaksiPelBTN.TabIndex = 0;
-            RiwayatTransaksiPelBTN.UseVisualStyleBackColor = false;
+            RiwayatTransaksiBTN.BackColor = Color.Transparent;
+            RiwayatTransaksiBTN.FlatAppearance.BorderSize = 0;
+            RiwayatTransaksiBTN.FlatStyle = FlatStyle.Popup;
+            RiwayatTransaksiBTN.ForeColor = Color.Transparent;
+            RiwayatTransaksiBTN.Location = new Point(70, 205);
+            RiwayatTransaksiBTN.Name = "RiwayatTransaksiBTN";
+            RiwayatTransaksiBTN.Size = new Size(171, 35);
+            RiwayatTransaksiBTN.TabIndex = 0;
+            RiwayatTransaksiBTN.UseVisualStyleBackColor = false;
             // 
             // KeranjangBTN
             // 
             KeranjangBTN.BackColor = Color.Transparent;
-            KeranjangBTN.Location = new Point(1177, 606);
+            KeranjangBTN.FlatAppearance.BorderSize = 0;
+            KeranjangBTN.FlatStyle = FlatStyle.Popup;
+            KeranjangBTN.Location = new Point(1169, 614);
             KeranjangBTN.Name = "KeranjangBTN";
-            KeranjangBTN.Size = new Size(75, 63);
+            KeranjangBTN.Size = new Size(83, 55);
             KeranjangBTN.TabIndex = 1;
             KeranjangBTN.UseVisualStyleBackColor = false;
             // 
             // KatalogPelanggan
             // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1262, 673);
+            ClientSize = new Size(1264, 681);
             Controls.Add(KeranjangBTN);
-            Controls.Add(RiwayatTransaksiPelBTN);
-            DoubleBuffered = true;
+            Controls.Add(RiwayatTransaksiBTN);
             Name = "KatalogPelanggan";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "A";
+            Text = "KatalogPelanggan";
             Load += KatalogPelanggan_Load;
             ResumeLayout(false);
-
         }
 
         #endregion
 
-        private Button RiwayatTransaksiPelBTN;
+        private Button RiwayatTransaksiBTN;
         private Button KeranjangBTN;
     }
 }

@@ -99,5 +99,15 @@ namespace ChochoNest.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_11_26_at_17_02_38 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-11-26 at 17.02.38", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

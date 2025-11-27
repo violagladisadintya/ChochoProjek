@@ -1,12 +1,9 @@
-﻿using ChochoNest.Models;
+csharp ChochoNest\View\KatalogPelanggan.cs
+using ChochoNest.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ChochoNest.View
@@ -30,11 +27,20 @@ namespace ChochoNest.View
                 Dock = DockStyle.Fill,
                 AutoScroll = true,
                 Padding = new Padding(10),
-                BackColor = Color.WhiteSmoke
+                Margin = new Padding(0),
+                BackColor = Color.Transparent
             };
-            panelProduk.BackgroundImage = this.BackgroundImage;
-            panelProduk.BackgroundImageLayout = ImageLayout.Zoom;
+
+            // Jika form punya BackgroundImage, salin ke panel agar terlihat penuh
+            if (this.BackgroundImage != null)
+            {
+                panelProduk.BackgroundImage = this.BackgroundImage;
+                panelProduk.BackgroundImageLayout = ImageLayout.Zoom;
+            }
+
+            // Tambahkan panel dan kirim ke belakang agar kontrol designer (tombol/sidebar) tetap di atas
             this.Controls.Add(panelProduk);
+            panelProduk.SendToBack();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -130,9 +136,15 @@ namespace ChochoNest.View
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
-            Button btnMasukkanKeranjang = new Button
+            if (produk.Stok <= 0)
             {
-                Text = "Masukkan Ke Keranjang",
+                lblStok.ForeColor = Color.Red;
+                lblStok.Text = "HABIS";
+            }
+
+            Button btnBeli = new Button
+            {
+                Text = "Beli Sekarang",
                 Size = new Size(190, 35),
                 Location = new Point(15, 260),
                 BackColor = Color.SaddleBrown,
@@ -142,25 +154,17 @@ namespace ChochoNest.View
                 Cursor = Cursors.Hand
             };
 
-            btnMasukkanKeranjang.FlatAppearance.BorderSize = 0;
+            btnBeli.FlatAppearance.BorderSize = 0;
 
-            // Hover effect untuk tombol beli
-            btnMasukkanKeranjang.MouseEnter += (s, e) => btnMasukkanKeranjang.BackColor = Color.Chocolate;
-            btnMasukkanKeranjang.MouseLeave += (s, e) => btnMasukkanKeranjang.BackColor = Color.SaddleBrown;
+            btnBeli.MouseEnter += (s, e) => btnBeli.BackColor = Color.Chocolate;
+            btnBeli.MouseLeave += (s, e) => btnBeli.BackColor = Color.SaddleBrown;
 
-            btnMasukkanKeranjang.Click += (s, e) =>
+            btnBeli.Click += (s, e) =>
             {
-                // TODO: Implementasi logika pembelian
-                // Bisa menampilkan form detail produk atau langsung ke keranjang
                 MessageBox.Show($"Anda memilih {produk.NamaProduk}\nHarga: Rp {produk.Harga:N0}",
                     "Detail Produk", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Contoh: Buka form detail atau tambah ke keranjang
-                // DetailProduk detailForm = new DetailProduk(produk);
-                // detailForm.ShowDialog();
             };
 
-            // Hover effect untuk card
             card.MouseEnter += (s, e) =>
             {
                 card.BackColor = Color.FromArgb(250, 250, 250);
@@ -177,7 +181,7 @@ namespace ChochoNest.View
             card.Controls.Add(lblNama);
             card.Controls.Add(lblHarga);
             card.Controls.Add(lblStok);
-            card.Controls.Add(btnMasukkanKeranjang);
+            card.Controls.Add(btnBeli);
 
             return card;
         }

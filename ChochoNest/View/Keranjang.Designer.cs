@@ -1,6 +1,6 @@
 ﻿namespace ChochoNest.View
 {
-    partial class Riwayat_Transaksi_Pelanggan
+    partial class Keranjang
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Riwayat_Transaksi_Pelanggan));
-            SuspendLayout();
-            // 
-            // Riwayat_Transaksi_Pelanggan
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1264, 681);
-            DoubleBuffered = true;
-            Name = "Riwayat_Transaksi_Pelanggan";
-            Text = "Riwayat_Transaksi_Pelanggan";
-            Load += Riwayat_Transaksi_Pelanggan_Load;
-            ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "Keranjang";
         }
 
         #endregion
