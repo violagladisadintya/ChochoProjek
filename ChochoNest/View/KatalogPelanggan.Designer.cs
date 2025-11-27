@@ -55,6 +55,7 @@
             KeranjangBTN.Size = new Size(83, 55);
             KeranjangBTN.TabIndex = 1;
             KeranjangBTN.UseVisualStyleBackColor = false;
+            KeranjangBTN.Click += KeranjangBTN_Click;
             // 
             // KatalogPelanggan
             // 

@@ -13,6 +13,8 @@ namespace ChochoNest.View
 {
     public partial class KatalogPelanggan : Form
     {
+        public static List<int> Keranjang = new List<int>();
+
         private readonly ProdukContext _controller = new ProdukContext();
         private FlowLayoutPanel panelProduk;
 
@@ -67,6 +69,13 @@ namespace ChochoNest.View
             }
 
             panelProduk.ResumeLayout();
+        }
+
+        public void TambahKeKeranjang(int idProduk)
+        {
+            Keranjang.Add(idProduk);
+            MessageBox.Show("Berhasil ditambahkan ke keranjang!",
+                "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private Panel CreateProdukCard(Produk produk)
@@ -139,8 +148,12 @@ namespace ChochoNest.View
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Cursor = Cursors.Hand
+                Cursor = Cursors.Hand,
+
+                // SIMPAN ID PRODUK KE TAG
+                Tag = produk.IdProduk
             };
+
 
             btnMasukkanKeranjang.FlatAppearance.BorderSize = 0;
 
@@ -150,15 +163,12 @@ namespace ChochoNest.View
 
             btnMasukkanKeranjang.Click += (s, e) =>
             {
-                // TODO: Implementasi logika pembelian
-                // Bisa menampilkan form detail produk atau langsung ke keranjang
-                MessageBox.Show($"Anda memilih {produk.NamaProduk}\nHarga: Rp {produk.Harga:N0}",
-                    "Detail Produk", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                int idProduk = (int)((Button)s).Tag;
 
-                // Contoh: Buka form detail atau tambah ke keranjang
-                // DetailProduk detailForm = new DetailProduk(produk);
-                // detailForm.ShowDialog();
+                // Tambahkan ke keranjang
+                TambahKeKeranjang(idProduk);
             };
+
 
             // Hover effect untuk card
             card.MouseEnter += (s, e) =>
@@ -185,6 +195,12 @@ namespace ChochoNest.View
         private void KatalogPelanggan_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void KeranjangBTN_Click(object sender, EventArgs e)
+        {
+            Keranjang formKeranjang = new Keranjang(Keranjang);
+            formKeranjang.ShowDialog();
         }
     }
 }

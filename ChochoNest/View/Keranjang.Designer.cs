@@ -28,12 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Keranjang";
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            btnProsesTransaksi = new Button();
+            SuspendLayout();
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(96, 66);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(200, 100);
+            flowLayoutPanel1.TabIndex = 0;
+            // 
+            // btnProsesTransaksi
+            // 
+            btnProsesTransaksi.Location = new Point(477, 226);
+            btnProsesTransaksi.Name = "btnProsesTransaksi";
+            btnProsesTransaksi.Size = new Size(75, 23);
+            btnProsesTransaksi.TabIndex = 1;
+            btnProsesTransaksi.Text = "button1";
+            btnProsesTransaksi.UseVisualStyleBackColor = true;
+            btnProsesTransaksi.Click += button1_Click;
+            // 
+            // Keranjang
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnProsesTransaksi);
+            Controls.Add(flowLayoutPanel1);
+            Name = "Keranjang";
+            Text = "Keranjang";
+            Load += Keranjang_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnProsesTransaksi;
     }
 }

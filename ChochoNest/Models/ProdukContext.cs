@@ -263,5 +263,45 @@ namespace ChochoNest.Models
             catch { }
             return listRiwayat;
         }
+
+        public Produk GetProdukById(int idProduk)
+        {
+            Produk p = null;
+            string query = "SELECT id_produk, nama_produk, harga, stok, gambar_produk FROM produk WHERE id_produk = @id";
+
+            try
+            {
+                using (NpgsqlConnection conn = new NpgsqlConnection(_dbContext.connStr))
+                {
+                    conn.Open();
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idProduk);
+
+                        using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                p = new Produk();
+                                p.IdProduk = Convert.ToInt32(reader["id_produk"]);
+                                p.NamaProduk = reader["nama_produk"].ToString();
+                                p.Harga = Convert.ToInt32(reader["harga"]);
+                                p.Stok = Convert.ToInt32(reader["stok"]);
+
+                                if (reader["gambar_produk"] != DBNull.Value)
+                                    p.gambarProduk = (byte[])reader["gambar_produk"];
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal mengambil produk by ID: " + ex.Message);
+            }
+
+            return p;
+        }
+
     }
 }
